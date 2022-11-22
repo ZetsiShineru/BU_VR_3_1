@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 433236}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: InteriorWall2F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 3337062}
   - component: {fileID: 2379816}
   - component: {fileID: 6460126}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: InteriorWall2F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 3396720}
   - component: {fileID: 2394310}
   - component: {fileID: 6480104}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: InteriorWall2F01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

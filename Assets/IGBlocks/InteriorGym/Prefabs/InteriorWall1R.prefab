@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3347800}
   - component: {fileID: 2313638}
   - component: {fileID: 6499824}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: InteriorWall1R
   m_TagString: Untagged
   m_Icon: {fileID: 0}

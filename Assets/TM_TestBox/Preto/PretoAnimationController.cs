@@ -8,7 +8,7 @@ public class PretoAnimationController : MonoBehaviour
     public AnimationClip[] clips;//0 = idel 1 = walk 2 = run
     private int numClipPlaying = 0;
     [Range (0,2)]public int numClip = 0;
-    public float speed = 1;
+    public float run_PlaySpeed = 0.8f;
 
     private void Start()
     {
@@ -24,7 +24,7 @@ public class PretoAnimationController : MonoBehaviour
         {
             Debug.Log(num);
             anim.clip = clips[num];
-            anim["Running"].speed = speed;
+            anim["Running"].speed = run_PlaySpeed;
             anim.Play();
             numClipPlaying = num;
             return;
