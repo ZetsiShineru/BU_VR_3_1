@@ -22,6 +22,8 @@ public class SubPreto : MonoBehaviour
                 if (hitRay.collider.tag == "Player")
                 {
                     preto.GetComponent<TestEnemyNavMesh>().checkPlayer = true;
+                    preto.GetComponent<TestEnemyNavMesh>().checkOutChasTimer = false;
+                    preto.GetComponent<TestEnemyNavMesh>().timerCheckPlayer = 10;
                 }
             }
         }
@@ -31,6 +33,7 @@ public class SubPreto : MonoBehaviour
         if (other.tag == "Player")
         {
             preto.GetComponent<TestEnemyNavMesh>().checkPlayer = false;
+            preto.GetComponent<TestEnemyNavMesh>().checkOutChasTimer = true;
         }
     }
     private void OnDrawGizmos()

@@ -31,10 +31,11 @@ public class TestEnemyNavMesh : MonoBehaviour
     [SerializeField] private Vector3 r_Box;
 
     [Header("TimerCheck")]
-    float timerCheckPlayer = 0;
+    public float timerCheckPlayer = 0;
     float timerCheckEnemyPosition = 2;
     float timerReRandomPosition = 0;
     float delayReRandomPosition = 15;
+    public bool checkOutChasTimer = false;
 
     [Header("Sound")]
     [SerializeField] private AudioSource PretoSound;
@@ -61,13 +62,14 @@ public class TestEnemyNavMesh : MonoBehaviour
         }
         if (!checkPlayer)
         {
-            timerCheckPlayer -= Time.deltaTime;
-
-            if (timerCheckPlayer < 0 )
+            if (checkOutChasTimer)
+            { timerCheckPlayer -= Time.deltaTime; }
+            if (timerCheckPlayer < 0.01f )
             {
                 Debug.Log("walking");
                 if (PretoSound.clip != walkSound)
                 {
+                    navMeshAgent.speed = walkSpeed;
                     PretoSound.Stop();
                     PretoSound.clip = walkSound;
                     PretoSound.Play();
@@ -93,7 +95,7 @@ public class TestEnemyNavMesh : MonoBehaviour
                 PretoSound.Stop();
                 navMeshAgent.speed = idelSpeed;
             }
-            timerCheckEnemyPosition = Time.time + 2;
+            timerCheckEnemyPosition = Time.time + 1.5f;
             checkPretoPosition = transform.position;
         }
         if (navMeshAgent.speed != speedPlaying)
