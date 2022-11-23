@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -21,6 +22,7 @@ public class WheyDetector : MonoBehaviour
                     if (rb != null)
                     {
                         Destroy(rb.gameObject);
+                        SoundManager.instance.Play(SoundManager.SoundName.Collect);
                         GameManager.Instance.AddScore();
                         print("Collected Whey!");
                     }
