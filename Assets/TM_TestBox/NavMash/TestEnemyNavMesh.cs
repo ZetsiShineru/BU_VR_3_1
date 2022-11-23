@@ -9,6 +9,7 @@ public class TestEnemyNavMesh : MonoBehaviour
     private NavMeshAgent navMeshAgent;
     private float speedPlaying;
     [SerializeField] private Vector3 randomWayPoint;
+    [SerializeField] private Vector3 checkPretoPosition;
     [Header("RoomDistance")]
     public float minX;
     public float maxX;
@@ -23,6 +24,7 @@ public class TestEnemyNavMesh : MonoBehaviour
     [SerializeField] private float runSpeed = 5;
 
     [Header("CastBox")]
+    public bool checkPlayer = false;
     RaycastHit[] hitBoxs;
     public LayerMask selectionMask;
     [SerializeField] private float r_BoxDistance;
@@ -30,14 +32,22 @@ public class TestEnemyNavMesh : MonoBehaviour
 
     [Header("TimerCheck")]
     float timerCheckPlayer = 0;
+    float timerCheckEnemyPosition = 2;
     float timerReRandomPosition = 0;
     float delayReRandomPosition = 15;
+
+    [Header("Sound")]
+    [SerializeField] private AudioSource PretoSound;
+    [SerializeField] private AudioClip walkSound;
+    [SerializeField] private AudioClip runSound;
 
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         pretoAC = gameObject.GetComponent<PretoAnimationController>();
         speedPlaying = navMeshAgent.speed;
+        target = GameObject.Find("BodyCol");
+        checkPretoPosition = transform.position;
     }
     private void Update()
     {
@@ -45,21 +55,46 @@ public class TestEnemyNavMesh : MonoBehaviour
         if (timerReRandomPosition < Time.time)
         {
             timerReRandomPosition = Time.time + delayReRandomPosition;
+            navMeshAgent.speed = walkSpeed;
+            PretoSound.Play();
             randomWayPoint = RandomLocationTarget();
         }
-
-        if (!CheckPlayer())
+        if (!checkPlayer)
         {
             timerCheckPlayer -= Time.deltaTime;
-            if (timerCheckPlayer < 0)
+
+            if (timerCheckPlayer < 0 )
             {
                 Debug.Log("walking");
+                if (PretoSound.clip != walkSound)
+                {
+                    PretoSound.Stop();
+                    PretoSound.clip = walkSound;
+                    PretoSound.Play();
+                }
                 navMeshAgent.SetDestination(randomWayPoint);
             }
         }
         else
         {
-            navMeshAgent.destination = target.transform.position;
+            navMeshAgent.speed = runSpeed;
+            if (PretoSound.clip != runSound)
+            {
+                PretoSound.Stop();
+                PretoSound.clip = runSound;
+                PretoSound.Play();
+            }
+            navMeshAgent.SetDestination(target.transform.position);
+        }
+        if (timerCheckEnemyPosition < Time.time)
+        {
+            if (IsIdel())
+            {
+                PretoSound.Stop();
+                navMeshAgent.speed = idelSpeed;
+            }
+            timerCheckEnemyPosition = Time.time + 2;
+            checkPretoPosition = transform.position;
         }
         if (navMeshAgent.speed != speedPlaying)
         {
@@ -95,6 +130,14 @@ public class TestEnemyNavMesh : MonoBehaviour
     {
         Vector3 A = new Vector3(Random.Range(minX, maxX), Y, Random.Range(minZ, maxZ));
         return A;
+    }
+    bool IsIdel()
+    {
+        if(System.Math.Round(checkPretoPosition.x,2) == System.Math.Round(transform.position.x,2) && System.Math.Round(checkPretoPosition.z, 2) == System.Math.Round(transform.position.z, 2))
+        {
+            return true;
+        }
+        return false;
     }
     void OnDrawGizmos()
     {
