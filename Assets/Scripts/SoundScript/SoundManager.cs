@@ -61,6 +61,7 @@ namespace DefaultNamespace
                 sound.audioSource.volume = sound.volume;
             }
             sound.audioSource.Play();
+            sound.audioSource.mute = false;
         }
 
         private Sound GetSound(SoundName name)
@@ -72,8 +73,14 @@ namespace DefaultNamespace
         {
             Sound sound = GetSound(name);
             sound.audioSource.mute = true;
+            sound.audioSource.loop = false;
         }
-        
+
+        public void Loop(SoundName name)
+        {
+            Sound sound = GetSound(name);
+            sound.audioSource.loop = true;
+        }
         // Update is called once per frame
         void Update()
         {

@@ -12,7 +12,7 @@ namespace DefaultNamespace
         {
             Debug.Log("BGM1 Play");
             SoundManager.instance.Play(SoundManager.SoundName.BGM4);
-            
+            SoundManager.instance.Loop(SoundManager.SoundName.BGM4);
         }
 
         void Update()
