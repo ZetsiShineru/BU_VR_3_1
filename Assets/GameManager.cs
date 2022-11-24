@@ -24,13 +24,13 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        scoreText.text = $"Score: " + score;
+        scoreText.text = $"Whey: " + score;
     }
 
     public void AddScore()
     {
         score = score + 1;
-        scoreText.text = $"Score: " + score;
+        scoreText.text = $"Whey: " + score;
         if(score >= targetScore)
         {
             exitArea.SetActive(true);
