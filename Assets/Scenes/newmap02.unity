@@ -1846,7 +1846,7 @@ MonoBehaviour:
   score: 0
   scoreText: {fileID: 77412441}
   targetScore: 10
-  exitArea: {fileID: 0}
+  exitArea: {fileID: 1768798671}
 --- !u!4 &115917986
 Transform:
   m_ObjectHideFlags: 0
