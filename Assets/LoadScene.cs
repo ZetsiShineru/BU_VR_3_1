@@ -15,4 +15,11 @@ public class LoadScene : MonoBehaviour
             SceneManager.LoadScene(scenename);
         }
     }
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            SceneManager.LoadScene(scenename);
+        }
+    }
 }

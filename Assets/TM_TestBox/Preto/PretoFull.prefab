@@ -1998,6 +1998,7 @@ GameObject:
   - component: {fileID: 1463849200165902553}
   - component: {fileID: 1463849200165902548}
   - component: {fileID: 8429674296712145035}
+  - component: {fileID: 5027388983861602664}
   m_Layer: 0
   m_Name: PretoFull
   m_TagString: Untagged
@@ -2238,6 +2239,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5027388983861602664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7791564954950777672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 657feca8648d75644b74fb0b0b863541, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scenename: Dead
 --- !u!1 &7824960522256709515
 GameObject:
   m_ObjectHideFlags: 0
