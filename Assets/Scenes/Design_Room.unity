@@ -3660,7 +3660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 657feca8648d75644b74fb0b0b863541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenename: 
+  scenename: newmap02
 --- !u!65 &1865388823
 BoxCollider:
   m_ObjectHideFlags: 0
